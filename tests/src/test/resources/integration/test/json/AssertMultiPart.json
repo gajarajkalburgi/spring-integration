@@ -1,0 +1,35 @@
+{
+  "metadata": {
+    "name": "Assert multi part",
+    "description": "Assert multi part",
+    "assert": {
+      "order": false
+    }
+  },
+  "setup": {
+  },
+  "request": {
+    "url": "/upload/",
+    "method": "POST",
+    "headers": {
+      "Accept": "*/*",
+      "Content-Type": "multipart/form-data"
+    },
+    "body": {
+      "media": "@integration/image/spring-boot.png",
+      "stringValue": "This is Spring Boot logo.",
+      "metadata": {
+        "url": "https://spring.io/"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      "media",
+      "stringValue",
+      "metadata"
+    ]
+  },
+  "cleanup": {}
+}

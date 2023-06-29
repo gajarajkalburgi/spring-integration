@@ -1,0 +1,45 @@
+{
+  "metadata": {
+    "name": "Assert wire mock with regex",
+    "description": "Assert wire mock with regex"
+  },
+  "setup": {
+    "wiremock": [
+      {
+        "request" : {
+          "urlPattern" : "/maps/api/timezone/json\\?key=(\\w+)&location=35\\.01412100%2C135\\.67659200&timestamp=(\\d+)",
+          "method" : "GET"
+        },
+        "response" : {
+          "status" : 200,
+          "headers" : {
+            "content-type" : "application/json;charset=UTF-8"
+          },
+          "jsonBody" : {
+            "dstOffset" : 0,
+            "rawOffset" : 10800,
+            "status" : "OK",
+            "timeZoneId" : "Europe/Istanbul",
+            "timeZoneName" : "GMT+03:00"
+          }
+        }
+      }
+    ]
+  },
+  "request": {
+    "url": "/wiremockWithRegex?key=foobar&timestamp=1512111317999",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "dstOffset" : 0,
+      "rawOffset" : 10800,
+      "status" : "OK",
+      "timeZoneId" : "Europe/Istanbul",
+      "timeZoneName" : "GMT+03:00"
+    }
+  },
+  "cleanup": {
+  }
+}

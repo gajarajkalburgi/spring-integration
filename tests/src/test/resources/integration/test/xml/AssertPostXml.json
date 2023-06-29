@@ -1,0 +1,25 @@
+{
+  "metadata": {
+    "name": "Assert post to amqp mock",
+    "description": "Assert post to amqp mock"
+  },
+  "setup": {
+  },
+  "request": {
+    "url": "/createXml",
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/xml"
+    },
+    "body": "<foo><bar/></foo>"
+  },
+  "response": {
+    "status": 201,
+    "headers": {
+      "Content-Type": "application/xml;charset=UTF-8"
+    },
+    "body": "<foo><bar/></foo>"
+  },
+  "cleanup": {
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "metadata": {
+    "name": "Assert ignore array order",
+    "description": "Assert ignore array order",
+    "assert": {
+      "header": "REGEX",
+      "ignore": [
+        "$.._links"
+      ],
+      "order": false
+    }
+  },
+  "setup": {
+    "database": [
+      "INSERT INTO CORE_TEST (ID, FLAG, AMT, DESC) VALUES ('1', true, 100 ,'foo')",
+      "INSERT INTO CORE_TEST (ID, FLAG, AMT, DESC) VALUES ('2', false, 500 ,'bar')"
+    ]
+  },
+  "request": {
+    "url": "/api/core-test",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": {
+        "$ref": "integration/constant.json/#/contentType/applicationJson"
+      }
+    },
+    "body": {
+      "_embedded": {
+        "coreTests": [
+          {
+            "flag": false,
+            "amt": 500,
+            "desc": "bar"
+          },
+          {
+            "flag": true,
+            "amt": 100,
+            "desc": "foo"
+          }
+        ]
+      }
+    }
+  },
+  "cleanup": {
+    "database": [
+      {
+        "$ref": "integration/variables/objective.json/#/query2"
+      }
+    ]
+  }
+}

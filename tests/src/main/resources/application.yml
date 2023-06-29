@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: integration-test
+  datasource:
+    driver-class-name: org.hsqldb.jdbc.JDBCDriver
+    url: jdbc:hsqldb:mem:dataSource;sql.syntax_ora=true
+    username: sa
+    password:
+  data:
+    rest:
+      basePath: /api
+      detection-strategy: ALL
+
+  rabbitmq:
+    port: 1235
+    username: guest
+    password: guest
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+server:
+  servlet:
+    context-path: /integration

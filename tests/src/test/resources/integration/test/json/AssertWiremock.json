@@ -1,0 +1,235 @@
+{
+  "metadata": {
+    "name": "Assert header for wiremock",
+    "description": "Assert header for wiremock",
+    "assert": {
+      "header": "REGEX"
+    },
+    "properties": {
+      "auth-provider": "7833ad47-8584-4174-9352-f761c44e7d18",
+      "auth-authenticated": "true"
+    }
+  },
+  "setup": {
+    "wiremock": [
+      {
+        "request": {
+          "url": "/accounting-api/external/availability",
+          "method": "GET",
+          "headers": {
+            "auth-authenticated": {
+              "equalTo": "true"
+            },
+            "auth-provider": {
+              "equalTo": "7833ad47-8584-4174-9352-f761c44e7d18"
+            }
+          }
+        },
+        "response": {
+          "status": 200,
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "jsonBody": [
+            "2018-01",
+            "2018-02",
+            "2018-03"
+          ]
+        }
+      },
+      {
+        "request": {
+          "url": "/accounting-api/external/search?yearMonth=2018-01",
+          "method": "GET",
+          "headers": {
+            "auth-authenticated": {
+              "equalTo": "true"
+            },
+            "auth-provider": {
+              "equalTo": "7833ad47-8584-4174-9352-f761c44e7d18"
+            }
+          }
+        },
+        "response": {
+          "status": 200,
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "jsonBody": [
+            {
+              "id": "0ab9cca8-6eda-4d75-a814-5fceb2e8f528",
+              "type": "Payment",
+              "reportNo": "SLraiJ9f-20170822-17",
+              "amount": -345000,
+              "dueDate": "2018-03-31",
+              "files": []
+            },
+            {
+              "id": "0e50a6d0-5dff-4056-9c66-6e8a7c0d6974",
+              "type": "Invoice",
+              "reportNo": "SLraiJ9f-20170822-18",
+              "amount": -55000,
+              "dueDate": "2018-03-31",
+              "files": [
+                {
+                  "type": "pdf",
+                  "fileName": "YYYY.pdf",
+                  "downloadable": false
+                },
+                {
+                  "type": "csv",
+                  "fileName": "YYYY.csv",
+                  "downloadable": true
+                }
+              ]
+            },
+            {
+              "id": "93240d2c-9bf1-4be1-8cb5-801b0d5ffbdf",
+              "type": "Offset",
+              "reportNo": "OS30000A-201801-114-02",
+              "amount": 19832,
+              "dueDate": "2018-03-31",
+              "files": []
+            }
+          ]
+        }
+      },
+      {
+        "request": {
+          "url": "/accounting-api/external/csv/0e50a6d0-5dff-4056-9c66-6e8a7c0d6974",
+          "method": "GET",
+          "headers": {
+            "auth-authenticated": {
+              "equalTo": "true"
+            },
+            "auth-provider": {
+              "equalTo": "7833ad47-8584-4174-9352-f761c44e7d18"
+            }
+          }
+        },
+        "response": {
+          "status": 200,
+          "headers": {
+            "Content-Type": "text/csv"
+          },
+          "body": "\"foo\",\"bar\""
+        }
+      }
+    ]
+  },
+  "scenario": [
+    {
+      "request": {
+        "url": "/accounting/availability",
+        "headers": {
+          "auth-provider": {
+            "$ref": "#/auth-provider"
+          },
+          "auth-authenticated": {
+            "$ref": "#/auth-authenticated"
+          }
+        },
+        "method": "GET"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": {
+            "$ref": "integration/constant.json/#/contentType/applicationJson"
+          }
+        },
+        "body": [
+          "2018-01",
+          "2018-02",
+          "2018-03"
+        ]
+      }
+    },
+    {
+      "request": {
+        "url": "/accounting/search",
+        "headers": {
+          "auth-provider": {
+            "$ref": "#/auth-provider"
+          },
+          "auth-authenticated": {
+            "$ref": "#/auth-authenticated"
+          }
+        },
+        "query": {
+          "yearMonth": "%{$[0].body[0]}"
+        },
+        "method": "GET"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": {
+            "$ref": "integration/constant.json/#/contentType/applicationJson"
+          }
+        },
+        "body": [
+          {
+            "id": "0ab9cca8-6eda-4d75-a814-5fceb2e8f528",
+            "type": "Payment",
+            "reportNo": "SLraiJ9f-20170822-17",
+            "amount": -345000,
+            "dueDate": "2018-03-31",
+            "files": []
+          },
+          {
+            "id": "0e50a6d0-5dff-4056-9c66-6e8a7c0d6974",
+            "type": "Invoice",
+            "reportNo": "SLraiJ9f-20170822-18",
+            "amount": -55000,
+            "dueDate": "2018-03-31",
+            "files": [
+              {
+                "type": "pdf",
+                "fileName": "YYYY.pdf",
+                "downloadable": false
+              },
+              {
+                "type": "csv",
+                "fileName": "YYYY.csv",
+                "downloadable": true
+              }
+            ]
+          },
+          {
+            "id": "93240d2c-9bf1-4be1-8cb5-801b0d5ffbdf",
+            "type": "Offset",
+            "reportNo": "OS30000A-201801-114-02",
+            "amount": 19832,
+            "dueDate": "2018-03-31",
+            "files": []
+          }
+        ]
+      }
+    },
+    {
+      "request": {
+        "url": "/accounting/csv",
+        "headers": {
+          "auth-provider": {
+            "$ref": "#/auth-provider"
+          },
+          "auth-authenticated": {
+            "$ref": "#/auth-authenticated"
+          }
+        },
+        "path": ["%{$[1].body[1].id}"],
+        "method": "GET"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "text/csv"
+        },
+        "body": "\"foo\",\"bar\""
+      }
+    }
+  ],
+  "cleanup": {
+  }
+}

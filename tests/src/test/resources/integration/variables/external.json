@@ -1,0 +1,22 @@
+[
+  {
+    "request": {
+      "url": "/external/1",
+      "method": "GET"
+    },
+    "response": {
+      "status": 200,
+      "jsonBody": {
+        "flag": {
+          "$ref": "#/flag"
+        },
+        "amt": {
+          "$ref": "#/amt"
+        },
+        "desc": {
+          "$ref": "#/desc"
+        }
+      }
+    }
+  }
+]

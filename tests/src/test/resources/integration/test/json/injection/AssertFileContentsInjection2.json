@@ -1,0 +1,33 @@
+{
+  "metadata": {
+    "name": "Assert File contents injection",
+    "description": "Assert wire mock",
+    "assert": {
+      "header": "REGEX",
+      "ignore": [
+        "$._links"
+      ]
+    }
+  },
+  "request": {
+    "url": "/api/core-test",
+    "method": "POST",
+    "body": {
+      "flag": true,
+      "amt": 100,
+      "desc": "foo"
+    }
+  },
+  "response": {
+    "status": 201,
+    "headers": {
+      "Content-Type": {
+        "$ref": "integration/constant.json/#/contentType/applicationJson"
+      }
+    },
+    "body": {
+      "$ref": "integration/variables/flagAndAmt.json/#/",
+      "desc": "foo"
+    }
+  }
+}

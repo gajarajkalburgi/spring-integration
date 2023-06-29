@@ -1,0 +1,60 @@
+// This is valid JSON for Spring Boot Integration Test Framework.
+{
+  "metadata" : {
+    "name" : "Test Name",
+    "description" : "Test description",
+    "assert": {
+      "header": "REGEX",
+      "ignore": [
+        "$._links",
+        "$..id"
+      ],
+      "order": false
+    },
+    "properties" : {
+      "token": "```messageDigest('credential')```",
+      "today": "```currentDate(\"yyyy-MM-dd\")```",
+      "foo": "bar"
+    }
+  },
+  "setup": {
+    "database" : {
+      "$ref": "variables/db/setup.json/#/database"
+    },
+    "wiremock": {
+      "$ref": "variables/json/setup.json/#/wiremock"
+    }
+  },
+  "request" : {
+    "url" : "/request url",
+    "method" : "GET",
+    "headers": {
+      "token": {
+        "$ref" : "#/token"
+      }
+    },
+    "body" : {
+      "startDate": {
+        "$ref": "#/today"
+      },
+      "paramFoo": {
+        "$ref": "#/foo"
+      }
+    }
+  },
+  "response" : {
+    "status" : 201,
+    "headers": {
+      "location": "^http://localhost:[0-9]+/.*/.+$",
+      "Content-Type": "application/json"
+    },
+    "body" : {
+      "message" : "succeeded!"
+    }
+  },
+  "cleanup": {
+    "database" : {
+      "$ref": "variables/db/cleanup.json/#/database"
+    }
+  }
+}

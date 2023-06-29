@@ -1,0 +1,78 @@
+{
+  "metadata": {
+    "name": "Assert list body",
+    "description": "Assert to accept list in request and response body",
+    "assert": {
+      "order": false
+    }
+  },
+  "setup": {
+  },
+  "request": {
+    "url": "/books/",
+    "method": "POST",
+    "body": [
+      {
+        "category": "COOKING",
+        "reservation": true,
+        "id": 12577,
+        "author": "永岡書店",
+        "title": "たった1さじで驚くほどおいしくなる 味覇(ウェイパァー)レシピ ",
+        "year": "2013",
+        "price": 1000
+      },
+      {
+        "category": "COOKING",
+        "reservation": true,
+        "id": 12578,
+        "author": "Giada De Laurentiis",
+        "title": "Everyday Italian",
+        "year": "2005",
+        "price": 30.0
+      },
+      {
+        "category": "COOKING",
+        "reservation": true,
+        "id": 12576,
+        "author": "オレンジページ",
+        "title": "The基本200",
+        "year": "2008",
+        "price": 300
+      }
+    ]
+  },
+  "response": {
+    "status": 201,
+    "body": [
+      {
+        "category": "COOKING",
+        "reservation": true,
+        "id": 12578,
+        "author": "Giada De Laurentiis",
+        "title": "Everyday Italian",
+        "year": "2005",
+        "price": 30.0
+      },
+      {
+        "category": "COOKING",
+        "reservation": true,
+        "id": 12576,
+        "author": "オレンジページ",
+        "title": "The基本200",
+        "year": "2008",
+        "price": 300
+      },
+      {
+        "category": "COOKING",
+        "reservation": true,
+        "id": 12577,
+        "author": "永岡書店",
+        "title": "たった1さじで驚くほどおいしくなる 味覇(ウェイパァー)レシピ ",
+        "year": "2013",
+        "price": 1000
+      }
+    ]
+  },
+  "cleanup": {
+  }
+}

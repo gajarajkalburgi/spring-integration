@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "name": "Assert default body equals",
+    "description": "Assert default body equals"
+  },
+  "request": {
+    "url": "/bookStore",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/xml"
+    },
+    "body": {
+      "$ref": "integration/variables/expected.xml/#/"
+    }
+  }
+}

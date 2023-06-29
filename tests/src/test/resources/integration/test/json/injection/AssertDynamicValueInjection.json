@@ -1,0 +1,40 @@
+{
+  "metadata": {
+    "name": "Assert dynamic value injection",
+    "description": "Assert dynamic value injection",
+    "assert": {
+      "body": "IGNORE"
+    },
+    "properties": {
+      "$ref": "integration/variables/dynamicProperties.json/#/"
+    }
+  },
+  "setup": {
+  },
+  "request": {
+    "url": "/api/core-test",
+    "method": "POST",
+    "headers": {
+      "uuid": "```uuid()```",
+      "token": {
+        "$ref": "#/messageDigest"
+      }
+    },
+    "body": {
+      "flag": {
+        "$ref": "#/randomBoolean"
+      },
+      "amt": {
+        "$ref": "#/squaring"
+      },
+      "desc": {
+        "$ref": "#/urlEncode"
+      }
+    }
+  },
+  "response": {
+    "status": 201
+  },
+  "cleanup": {
+  }
+}

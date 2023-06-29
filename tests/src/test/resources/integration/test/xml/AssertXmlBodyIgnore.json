@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "name": "Assert body ignore",
+    "description": "Assert body ignore",
+    "assert": {
+      "body": "IGNORE"
+    }
+  },
+  "request": {
+    "url": "/bookStore",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "content-type": "application/xml"
+    },
+    "body": {
+    }
+  }
+}

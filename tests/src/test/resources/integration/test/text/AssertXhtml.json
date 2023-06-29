@@ -1,0 +1,24 @@
+{
+  "metadata": {
+    "name": "Assert Xhtml",
+    "description": "Assert Xhtml"
+  },
+  "setup": {
+  },
+  "request": {
+    "url": "/text/xhtml",
+    "method": "GET",
+    "headers": {
+      "Accept": "application/xhtml+xml"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/xhtml+xml;charset=UTF-8"
+    },
+    "body": "<html><body><div>Hello xhtml in Spring Boot Integration Test Framework.</div></body></html>"
+  },
+  "cleanup": {
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "obj1": {
+    "str1": "string_one",
+    "boo1": true,
+    "num1": 1,
+    "arr1": [
+      3,
+      5,
+      7
+    ]
+  }

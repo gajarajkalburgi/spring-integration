@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bookstore>
+	<book category="COOKING" reservation="true">
+		<id>12578</id>
+		<author>Giada De Laurentiis</author>
+		<title>Everyday Italian</title>
+		<year>2005</year>
+		<price>30.0</price>
+	</book>
+	<book category="CHILDREN" reservation="false">
+		<id>86465</id>
+		<author>J K. Rowling</author>
+		<title>Harry Potter</title>
+		<year>2005</year>
+		<price>29.99</price>
+	</book>
+	<book category="WEB" reservation="true">
+		<id>99009</id>
+		<author>Erik T. Ray</author>
+		<title>Learning XML</title>
+		<year>2003</year>
+		<price>39.95</price>
+	</book>
+</bookstore>

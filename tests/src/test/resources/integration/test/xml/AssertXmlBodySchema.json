@@ -1,0 +1,22 @@
+{
+  "metadata": {
+    "name": "Assert body schema",
+    "description": "Assert body schema",
+    "assert": {
+      "body": "SCHEMA"
+    }
+  },
+  "request": {
+    "url": "/bookStore",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-type": "application/xml"
+    },
+    "body": {
+      "$ref": "integration/variables/bookstore.xsd/#/"
+    }
+  }
+}

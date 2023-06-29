@@ -1,0 +1,40 @@
+{
+  "metadata": {
+    "name": "Assert with comments",
+    "description": "Assert with test spec which contains comment line.",
+    // This is line commnet.
+    "assert": {
+      "header": "REGEX",
+      "ignore": [
+        "$._links"
+      ]
+    }
+  },
+  /*
+  "setup": {
+  },*/
+  "request": {
+    "url": "/api/core-test",
+    "method": "POST",
+    "body": {
+      "flag": true,
+      "amt": 100,
+      "desc": "foo"
+    }
+  },
+  "response": {
+    "status": 201,
+    "headers": {
+      "Content-Type": {
+        "$ref": "integration/constant.json/#/contentType/applicationJson"
+      }
+    },
+    "body": {
+      //"foo": "bar",
+      "flag": true,
+      "amt": 100,
+      "desc": "foo"
+    }
+  },
+  "cleanup": {}
+}

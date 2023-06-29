@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "name": "Assert wire mock",
+    "description": "Assert wire mock",
+    "properties": {
+      "flag": true,
+      "amt": 1000,
+      "desc": "説明文ディスクリプション"
+    }
+  },
+  "setup": {
+    "wiremock": {
+      "$ref": "integration/variables/wiremockTest.json/#/"
+    }
+  },
+  "request": {
+    "url": "/coreTestsWithExternal/1",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "flag": {
+        "$ref": "#/flag"
+      },
+      "amt": {
+        "$ref": "#/amt"
+      },
+      "desc": {
+        "$ref": "#/desc"
+      }
+    }
+  },
+  "cleanup": {
+  }
+}

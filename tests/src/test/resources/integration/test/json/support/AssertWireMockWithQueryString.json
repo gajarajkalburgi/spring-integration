@@ -1,0 +1,34 @@
+{
+  "metadata": {
+    "name": "Assert wire mock with query string",
+    "description": "Assert wire mock with query string"
+  },
+  "setup": {
+    "wiremock": [
+      {
+        "request": {
+          "method": "GET",
+          "url": "/external/findBy?year=2017&month=10&day=7&time=19:00"
+        },
+        "response": {
+          "status": 200,
+          "jsonBody": {
+            "result": "FOUND"
+          }
+        }
+      }
+    ]
+  },
+  "request": {
+    "url": "/wiremockWithQuery",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "result": "FOUND"
+    }
+  },
+  "cleanup": {
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "metadata": {
+    "name": "test",
+    "description": "test"
+  },
+  "setup": {
+  },
+  "request": {
+    "url": "/foo",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "body": {
+    }
+  }
+}

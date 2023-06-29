@@ -1,0 +1,66 @@
+{
+  "metadata": {
+    "name": "Assert path and query",
+    "description": "Assert with request which has path and query"
+  },
+  "setup": {
+    "wiremock": [
+      {
+        "request": {
+          "method": "GET",
+          "url": "/external/bookIds"
+        },
+        "response": {
+          "status": 200,
+          "jsonBody": [
+            12578,
+            86465,
+            99009
+          ]
+        }
+      }
+    ]
+  },
+  "scenario": [
+    {
+      "request": {
+        "url": "/coreTestsWithExternal/bookIds",
+        "method": "GET"
+      },
+      "response": {
+        "status": 200,
+        "body": [
+          12578,
+          86465,
+          99009
+        ]
+      }
+    },
+    {
+      "request": {
+        "url": "/",
+        "method": "GET",
+        "path": [
+          "findBookById"
+        ],
+        "query": {
+          "id": "%{$[0].body[0]}"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "author": "Giada De Laurentiis",
+          "category": "COOKING",
+          "reservation": true,
+          "id": 12578,
+          "title": "Everyday Italian",
+          "year": "2005",
+          "price": 30.0
+        }
+      }
+    }
+  ],
+  "cleanup": {
+  }
+}

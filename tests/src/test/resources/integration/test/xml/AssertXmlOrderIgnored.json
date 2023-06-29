@@ -1,0 +1,22 @@
+{
+  "metadata": {
+    "name": "Assert default body equals",
+    "description": "Assert default body equals",
+    "assert": {
+      "order": false
+    }
+  },
+  "request": {
+    "url": "/bookStore",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "content-Type": "application/xml"
+    },
+    "body": {
+      "$ref": "integration/variables/ignoredOrder.xml/#/"
+    }
+  }
+}

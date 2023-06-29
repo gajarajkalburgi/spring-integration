@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "name": "Assert Simple Text",
+    "description": "Assert Simple Text"
+  },
+  "setup": {
+  },
+  "request": {
+    "url": "/text/simpletext",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "text/plain;charset=UTF-8"
+    },
+    "body": "Hello simpletext in Spring Boot Integration Test Framework."
+  },
+  "cleanup": {
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "metadata": {
+    "name": "Assert PDF",
+    "description": "Assert PDF"
+  },
+  "setup": {
+  },
+  "request": {
+    "url": "/media/",
+    "method": "GET",
+    "headers": {
+      "Accept": "application/pdf"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/pdf"
+    },
+    "body": "@media/spoke.pdf"
+  },
+  "cleanup": {
+  }
+}

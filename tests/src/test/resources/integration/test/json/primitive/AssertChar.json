@@ -1,0 +1,18 @@
+{
+  "metadata": {
+    "name": "Primitive assert",
+    "description": "Assert not found"
+  },
+  "setup": {
+  },
+  "request": {
+    "url": "/primitive/char",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "body": "A"
+  },
+  "cleanup": {
+  }
+}

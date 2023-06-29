@@ -1,0 +1,34 @@
+{
+  "metadata": {
+    "name": "Assert header regex",
+    "description": "Assert header regex",
+    "assert": {
+      "body": "IGNORE",
+      "header": "REGEX"
+    }
+  },
+  "setup": {
+  },
+  "request": {
+    "url": "/api/core-test",
+    "method": "POST",
+    "body": {
+      "flag": true,
+      "amt": 100,
+      "desc": "foo"
+    }
+  },
+  "response": {
+    "status": 201,
+    "headers": {
+      "location": "^http://localhost:.*/api/core-test/.*"
+    }
+  },
+  "cleanup": {
+    "database": [
+      {
+        "$ref": "integration/variables/objective.json/#/query2"
+      }
+    ]
+  }
+}

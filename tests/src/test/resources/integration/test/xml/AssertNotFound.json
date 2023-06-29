@@ -1,0 +1,26 @@
+{
+  "metadata": {
+    "name": "Assert not found",
+    "description": "Assert not found",
+    "assert": {
+      "header": "REGEX",
+      "body": "IGNORE"
+    }
+  },
+  "setup": {
+  },
+  "request": {
+    "url": "/bookStore/dummy/",
+    "method": "GET"
+  },
+  "response": {
+    "status": 404,
+    "headers": {
+      "Content-Type": {
+        "$ref": "integration/constant.json/#/contentType/applicationJson"
+      }
+    }
+  },
+  "cleanup": {
+  }
+}

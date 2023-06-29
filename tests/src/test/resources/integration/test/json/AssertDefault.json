@@ -1,0 +1,43 @@
+{
+  "metadata": {
+    "name": "Assert default",
+    "description": "Assert default",
+    "assert": {
+      "header": "REGEX",
+      "ignore": [
+        "$._links"
+      ]
+    }
+  },
+  "setup": {
+  },
+  "request": {
+    "url": "/api/core-test",
+    "method": "POST",
+    "body": {
+      "flag": true,
+      "amt": 100,
+      "desc": "foo"
+    }
+  },
+  "response": {
+    "status": 201,
+    "headers": {
+      "Content-Type": {
+        "$ref": "integration/constant.json/#/contentType/applicationJson"
+      }
+    },
+    "body": {
+      "flag": true,
+      "amt": 100,
+      "desc": "foo"
+    }
+  },
+  "cleanup": {
+    "database": [
+      {
+        "$ref": "integration/variables/objective.json/#/query2"
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "metadata": {
+    "name": "Assert body schema",
+    "description": "Assert body schema",
+    "assert": {
+      "body": "SCHEMA"
+    }
+  },
+  "setup": {
+    "database": [
+      {
+        "$ref": "integration/variables/objective.json/#/query1"
+      }
+    ]
+  },
+  "request": {
+    "url": "/api/core-test/1",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "flag": {
+        "type": "boolean",
+        "enum": [
+          true
+        ]
+      },
+      "amt": {
+        "type": "number"
+      },
+      "desc": {
+        "type": "string",
+        "pattern": "[a-z]+"
+      }
+    }
+  },
+  "cleanup": {
+  }
+}

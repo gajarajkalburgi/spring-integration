@@ -1,0 +1,24 @@
+{
+  "metadata": {
+    "name": "Assert HTML",
+    "description": "Assert HTML"
+  },
+  "setup": {
+  },
+  "request": {
+    "url": "/text/html",
+    "method": "GET",
+    "headers": {
+      "Accept": "text/html"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "text/html;charset=UTF-8"
+    },
+    "body": "<html><body><div>Hello html in Spring Boot Integration Test Framework.</div></body></html>"
+  },
+  "cleanup": {
+  }
+}

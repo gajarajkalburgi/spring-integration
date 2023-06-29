@@ -1,0 +1,41 @@
+{
+  "metadata" : {
+    "name" : "Test Name",
+    "description" : "Test description",
+    "assert": {
+      "body": "EQUALS",
+      "header": "REGEX",
+      "order": false
+    },
+    "properties" : {
+      "token": "```messageDigest('credential')```",
+      "today": "```currentDate(\"yyyy-MM-dd\")```",
+      "foo": "bar"
+    }
+  },/*
+  "setup": {
+    "database" : [ ],
+    "wiremock": [ ]
+  },*/
+  "request" : {
+    "url" : "/request url",
+    "method" : "GET",
+    "headers": {
+      "token": {
+        "$ref" : "#/token"
+      }
+    },
+    "body" : "test/request.xml"
+  },
+  "response" : {
+    "status" : 201,
+    "headers": {
+      "location": "^http://localhost:[0-9]+/.*/.+$",
+      "Content-Type": "application/json"
+    },
+    "body" : "test/response.xml"
+  },
+  "cleanup": {
+    //"database" : [ ]
+  }
+}

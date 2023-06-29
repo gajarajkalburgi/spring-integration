@@ -1,0 +1,27 @@
+{
+  "metadata": {
+    "name": "Assert REGEX",
+    "description": "Assert REGEX",
+    "assert": {
+      "body": "REGEX"
+    }
+  },
+  "setup": {
+  },
+  "request": {
+    "url": "/text/xhtml",
+    "method": "GET",
+    "headers": {
+      "Accept": "application/xhtml+xml"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/xhtml+xml;charset=UTF-8"
+    },
+    "body": "<html><body><div>Hello .* in Spring Boot Integration Test Framework\\.</div></body></html>"
+  },
+  "cleanup": {
+  }
+}

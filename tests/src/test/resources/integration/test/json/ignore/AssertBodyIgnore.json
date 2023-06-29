@@ -1,0 +1,32 @@
+{
+  "metadata": {
+    "name": "Assert body ignore",
+    "description": "Assert body ignore",
+    "assert": {
+      "body": "IGNORE"
+    }
+  },
+  "setup": {
+    "database": [
+      {
+        "$ref": "integration/variables/objective.json/#/query1"
+      }
+    ]
+  },
+  "request": {
+    "url": "/api/core-test/1",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "body": {
+    }
+  },
+  "cleanup": {
+    "database": [
+      {
+        "$ref": "integration/variables/objective.json/#/query2"
+      }
+    ]
+  }
+}

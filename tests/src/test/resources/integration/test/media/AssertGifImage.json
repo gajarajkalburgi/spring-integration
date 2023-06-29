@@ -1,0 +1,24 @@
+{
+  "metadata": {
+    "name": "Assert png image",
+    "description": "Assert png image"
+  },
+  "setup": {
+  },
+  "request": {
+    "url": "/media/",
+    "method": "GET",
+    "headers": {
+      "Accept": "image/gif"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "image/gif"
+    },
+    "body": "@media/running.gif"
+  },
+  "cleanup": {
+  }
+}

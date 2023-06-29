@@ -1,0 +1,287 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "assert": {
+          "type": "object",
+          "properties": {
+            "body": {
+              "enum" : ["EQUALS","SCHEMA","IGNORE","REGEX"]
+            },
+            "header": {
+              "enum" : ["EQUALS","REGEX"]
+            },
+            "ignore": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "order": {
+              "type": "boolean"
+            },
+            "swagger": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "additionalProperties": false
+        },
+        "properties": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "description"
+      ]
+    },
+    "setup": {
+      "type": "object",
+      "properties": {
+        "database": {
+          "type": ["object", "array"]
+        },
+        "wiremock": {
+          "type": ["object", "array"]
+        },
+        "mongodb": {
+          "type": ["object", "array"]
+        },
+        "amqp": {
+          "type": ["object", "array"],
+          "properties": {
+            "queue": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "exclusive": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "autoDelete": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "arguments": {
+                  "type": "object"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "name"
+              ]
+            },
+            "exchange": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "type": {
+                  "enum": ["direct", "fanout", "topic", "headers", "DIRECT", "FANOUT", "TOPIC", "HEADERS"],
+                  "default": "fanout"
+                },
+                "routingKey": {
+                  "type": "string"
+                },
+                "autoDelete": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "arguments": {
+                  "type": "object"
+                },
+                "headers": {
+                  "type": ["object", "string", "array"]
+                }
+              },
+              "additionalProperties": false,
+              "required": ["name"]
+            },
+            "messages": {
+              "type": ["object", "string", "array"]
+            }
+          },
+          "additionalProperties": false,
+          "required": ["queue", "exchange"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "request": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "minLength": 1
+        },
+        "method": {
+          "enum": ["GET", "HEAD", "POST", "PUT", "DELETE", "CONNECT", "OPTIONS", "TRACE", "PATCH"]
+        },
+        "headers": {
+          "type": ["object", "string"]
+        },
+        "body": {
+          "type": ["object", "array", "string", "null"]
+        },
+        "query": {
+          "type": ["object", "null"]
+        },
+        "path": {
+          "type": ["array", "null"]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "url",
+        "method"
+      ]
+    },
+    "response": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "number",
+          "minimum": 200,
+          "maximum": 510
+        },
+        "headers": {
+          "type": ["object","string"]
+        },
+        "body": {
+          "type": ["object", "array", "string", "null", "boolean", "integer", "number"]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "status"
+      ]
+    },
+    "scenario": {
+      "type": "array",
+      "properties": {
+        "request": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "minLength": 1
+            },
+            "method": {
+              "enum": ["GET", "HEAD", "POST", "PUT", "DELETE", "CONNECT", "OPTIONS", "TRACE", "PATCH"]
+            },
+            "headers": {
+              "type": ["object", "string"]
+            },
+            "body": {
+              "type": ["object", "array", "string", "null"]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "url",
+            "method"
+          ]
+        },
+        "response": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "number",
+              "minimum": 200,
+              "maximum": 510
+            },
+            "headers": {
+              "type": ["object","string"]
+            },
+            "body": {
+              "type": ["object", "array", "string", "null", "boolean", "integer", "number"]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "request",
+            "response"
+          ]
+        }
+      }
+    },
+    "cleanup": {
+      "type": "object",
+      "properties": {
+        "database": {
+          "type": ["object", "array"]
+        },
+        "mongodb": {
+          "type": ["object", "array"]
+        },
+        "amqp": {
+          "type": ["object", "array"],
+          "properties": {
+            "queue": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "name"
+              ]
+            },
+            "exchange": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false,
+              "required": ["name"]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "oneOf" : [
+    {
+      "required": [
+        "metadata",
+        "request",
+        "response"
+      ]
+    },
+    {
+      "required": [
+        "metadata",
+        "scenario"
+      ]
+    }
+  ]
+}

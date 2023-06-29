@@ -1,0 +1,6 @@
+{
+  "messageDigest": "```urlEncode(messageDigest(randomString()))```",
+  "randomBoolean": "```randomBoolean()```",
+  "urlEncode": "```urlEncode(currentDate() + 'あいうえお')```",
+  "squaring": "```randomInt() ** 2```"
+}

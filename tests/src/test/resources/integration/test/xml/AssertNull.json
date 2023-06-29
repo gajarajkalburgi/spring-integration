@@ -1,0 +1,20 @@
+{
+  "metadata": {
+    "name": "Assert null",
+    "description": "Assert null"
+  },
+  "setup": {
+  },
+  "request": {
+    "url": "/null",
+    "method": "GET",
+    "headers": {
+      "accept": "application/xml"
+    }
+  },
+  "response": {
+    "status": 200
+  },
+  "cleanup": {
+  }
+}

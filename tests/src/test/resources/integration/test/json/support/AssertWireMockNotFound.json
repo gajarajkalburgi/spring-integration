@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "name": "Assert 404 with wiremock",
+    "description": "Assert 404 with wiremock"
+  },
+  "setup": {
+    "wiremock": [
+      {
+        "request": {
+          "url": "/external/1",
+          "method": "GET"
+        },
+        "response": {
+          "status": 404,
+          "jsonBody": {
+          }
+        }
+      }
+    ]
+  },
+  "request": {
+    "url": "/coreTestsWithExternal/1",
+    "method": "GET"
+  },
+  "response": {
+    "status": 404,
+    "body": {}
+  },
+  "cleanup": {
+  }
+}

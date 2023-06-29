@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "name": "Assert not mocked",
+    "description": "Assert not mocked",
+    "assert": {
+      "header": "REGEX"
+    }
+  },
+  "setup": {
+    "wiremock": [
+      {
+        "request": {
+          "url": "/xmlFromExternal/1",
+          "method": "GET"
+        },
+        "response": {
+          "status": 200,
+          "body": "<?xml version=\"1.0\" encoding=\"utf-8\"?><message>OK</message>"
+        }
+      }
+    ]
+  },
+  "request": {
+    "url": "/getXmlFromExternal/1",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application\/xml;charset=(utf|UTF)-8"
+    },
+    "body": "<?xml version=\"1.0\" encoding=\"utf-8\"?><message>OK</message>"
+  },
+  "cleanup": {
+  }
+}

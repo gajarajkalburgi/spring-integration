@@ -1,0 +1,4 @@
+{
+  "query1": "INSERT INTO CORE_TEST (ID, FLAG, AMT, DESC) VALUES ('1', true, 100 ,'foo')",
+  "query2": "DELETE FROM CORE_TEST"
+}

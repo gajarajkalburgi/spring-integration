@@ -1,0 +1,16 @@
+[
+  {
+    "request": {
+      "url": "/external/1",
+      "method": "GET"
+    },
+    "response": {
+      "status": 200,
+      "jsonBody": {
+        "flag": true,
+        "amt": 1000,
+        "desc": "説明文ディスクリプション"
+      }
+    }
+  }
+]

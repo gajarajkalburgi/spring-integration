@@ -1,0 +1,20 @@
+{
+  "metadata": {
+    "name": "Assert not found",
+    "description": "Assert not found"
+  },
+  "setup": {
+  },
+  "request": {
+    "url": "/api/core-test/1",
+    "method": "GET"
+  },
+  "response": {
+    "status": 404,
+    "headers": {
+      "Content-Length": "0"
+    }
+  },
+  "cleanup": {
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "metadata": {
+    "name": "Assert header regex",
+    "description": "Assert header regex",
+    "assert": {
+      "body": "IGNORE",
+      "header": "REGEX"
+    }
+  },
+  "setup": {
+  },
+  "request": {
+    "url": "/bookStore",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "content-type": "^application/xml$"
+    }
+  }
+}

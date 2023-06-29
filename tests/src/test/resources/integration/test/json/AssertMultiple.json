@@ -1,0 +1,70 @@
+{
+  "metadata": {
+    "name": "Assert multiple request and response",
+    "description": "multiple request and response",
+    "assert": {
+      "header": "REGEX",
+      "ignore": [
+        "$._links"
+      ]
+    },
+    "properties": {
+      "firstName": "FOO",
+      "lastName": "BAR",
+      "newFirstName": "HOGE",
+      "newLastName": "PIYO"
+    }
+  },
+  "setup": {
+  },
+  "scenario": [
+    {
+      "request": {
+        "url": "/api/core-test",
+        "method": "POST",
+        "body": {
+          "flag": true,
+          "amt": 100,
+          "desc": "foo"
+        }
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": {
+            "$ref": "integration/constant.json/#/contentType/applicationJson"
+          }
+        },
+        "body": {
+          "flag": true,
+          "amt": 100,
+          "desc": "foo"
+        }
+      }
+    },
+    {
+      "request": {
+        "url": "/api/core-test/1",
+        "method": "PUT",
+        "headers": {
+          "Content-Type": "%{$[0].headers.Content-Type[0]}"
+        },
+        "body": {
+          "flag": false,
+          "amt": "%{$[0].body.amt}",
+          "desc": "%{$[0].body.desc}"
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": {
+          "flag": false,
+          "amt": 100,
+          "desc": "foo"
+        }
+      }
+    }
+  ],
+  "cleanup": {
+  }
+}

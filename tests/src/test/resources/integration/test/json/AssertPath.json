@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "name": "Assert path",
+    "description": "Assert path",
+    "assert": {
+      "ignore": [
+        "id"
+      ]
+    }
+  },
+  "setup": {
+  },
+  "scenario": [
+    {
+      "request": {
+        "url": "/echo",
+        "method": "POST",
+        "path": [
+          "foobar",
+          "hoge"
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "message": "foobar",
+          "note": "hoge"
+        }
+      }
+    },
+    {
+      "request": {
+        "url": "/echo",
+        "method": "GET",
+        "path": [
+          "%{$[0].body.id}"
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "message": "foobar",
+          "note": "hoge"
+        }
+      }
+    }
+  ],
+  "cleanup": {
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "metadata": {
+    "name": "Assert value reference",
+    "description": "Assert value reference",
+    "assert": {
+      "header": "REGEX",
+      "ignore": [
+        "$._links"
+      ]
+    },
+    "properties": {
+      "obj": {
+        "flag": false,
+        "amt": 128
+      },
+      "desc": "```urlEncode('説明文ディスクリプション')```"
+    }
+  },
+  "request": {
+    "url": "/api/core-test",
+    "method": "POST",
+    "body": {
+      "flag": {
+        "$ref": "#/obj/flag"
+      },
+      "amt": {
+        "$ref": "#/obj/amt/3"
+      },
+      "desc": {
+        "$ref": "#/desc"
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "headers": {
+      "Content-Type": {
+        "$ref": "integration/constant.json/#/contentType/applicationJson"
+      }
+    },
+    "body": {
+      "$ref": "#/obj",
+      "desc": {
+        "$ref": "#/desc"
+      }
+    }
+  }
+}
